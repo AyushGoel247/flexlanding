@@ -2,41 +2,51 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-</head>
+	<meta charset="UTF-8"> </head>
 
 <body>
 	<div id="amazon-root"></div>
 	<script type="text/javascript">
-		window.onAmazonLoginReady = function() {
-                // Use the Client ID of your security profile
-                amazon.Login.setClientId('amzn1.application-oa2-client.c592ce55d8424d99b7d0387fddc0fea1');
-                 options = {}
-                        options.scope = ['smartconnect::inventories',
-                                     'smartconnect::orders',
-                                     'smartconnect::pricing',
-                                     'smartconnect::events',
-                                    'smartconnect::returns'];
-                        options.scope_data = {
-                            'smartconnect::inventories' : {'essential': true},
-                            'smartconnect::orders' : {'essential': true},
-                            'smartconnect::pricing' : {'essential': true},
-                            'smartconnect::events' : {'essential': true},
-                            'smartconnect::returns' : {'essential': true}
-                        };
-                        const queryString = window.location.search;
-                        const urlParams = new URLSearchParams(queryString);
-                        const redirect_uri = urlParams.get('redirect_uri')
-                        options.response_type='code';
-                        amazon.Login.authorize(options,redirect_uri);
-                       // window.close();
-            };
-            (function(d) {
-                var a = d.createElement('script'); a.type = 'text/javascript';
-                a.async = true; a.id = 'amazon-login-sdk';
-                a.src = 'https://assets.loginwithamazon.com/sdk/na/login1.js';
-                d.getElementById('amazon-root').appendChild(a);
-            })(document);
+	window.onAmazonLoginReady = function() {
+		// Use the Client ID of your security profile
+		amazon.Login.setClientId('amzn1.application-oa2-client.c592ce55d8424d99b7d0387fddc0fea1');
+		options = {}
+		options.scope = ['smartconnect::inventories', 'smartconnect::orders', 'smartconnect::pricing', 'smartconnect::events', 'smartconnect::returns'];
+		options.scope_data = {
+			'smartconnect::inventories': {
+				'essential': true
+			},
+			'smartconnect::orders': {
+				'essential': true
+			},
+			'smartconnect::pricing': {
+				'essential': true
+			},
+			'smartconnect::events': {
+				'essential': true
+			},
+			'smartconnect::returns': {
+				'essential': true
+			}
+		};
+		const queryString = window.location.search;
+        console.log("queryString: " + queryString);
+		const urlParams = new URLSearchParams(queryString);
+		const redirect_uri = urlParams.get('redirect_uri');
+        console.log("redirect_uri: " + redirect_uri);
+		options.response_type = 'code';
+        console.log("options: " + JSON.stringify(options));
+		amazon.Login.authorize(options, redirect_uri);
+		// window.close();
+	};
+	(function(d) {
+		var a = d.createElement('script');
+		a.type = 'text/javascript';
+		a.async = true;
+		a.id = 'amazon-login-sdk';
+		a.src = 'https://assets.loginwithamazon.com/sdk/na/login1.js';
+		d.getElementById('amazon-root').appendChild(a);
+	})(document);
 	</script>
 </body>
 
