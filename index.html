@@ -11,9 +11,9 @@
 		// Use the Client ID of your security profile
 		amazon.Login.setClientId('amzn1.application-oa2-client.c592ce55d8424d99b7d0387fddc0fea1');
 		options = {}
-		options.scope = ['smartconnect::inventories', 'smartconnect::orders', 'smartconnect::pricing', 'smartconnect::events'];
+		options.scope = ['smartconnect::orders', 'smartconnect::pricing', 'smartconnect::events', 'smartconnect::returns'];
 		options.scope_data = {
-			'smartconnect::inventories': {
+			'smartconnect::returns': {
 				'essential': true
 			},
 			'smartconnect::orders': {
